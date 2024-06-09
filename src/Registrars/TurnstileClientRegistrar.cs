@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Soenneker.Cloudflare.Turnstile.Client.Abstract;
+using Soenneker.Utils.HttpClientCache.Registrar;
 
 namespace Soenneker.Cloudflare.Turnstile.Client.Registrars;
 
@@ -14,6 +15,7 @@ public static class TurnstileClientRegistrar
     /// </summary>
     public static void AddTurnstileClientAsSingleton(this IServiceCollection services)
     {
+        services.AddHttpClientCache();
         services.TryAddSingleton<ITurnstileClient, TurnstileClient>();
     }
 
@@ -22,6 +24,7 @@ public static class TurnstileClientRegistrar
     /// </summary>
     public static void AddTurnstileClientAsScoped(this IServiceCollection services)
     {
+        services.AddHttpClientCache();
         services.TryAddScoped<ITurnstileClient, TurnstileClient>();
     }
 }
