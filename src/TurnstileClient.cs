@@ -2,6 +2,7 @@ using Soenneker.Cloudflare.Turnstile.Client.Abstract;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System;
+using System.Threading;
 using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Cloudflare.Turnstile.Client;
@@ -16,9 +17,9 @@ public class TurnstileClient: ITurnstileClient
         _httpClientCache = httpClientCache;
     }
 
-    public ValueTask<HttpClient> Get()
+    public ValueTask<HttpClient> Get(CancellationToken cancellationToken = default)
     {
-        return _httpClientCache.Get(nameof(TurnstileClient));
+        return _httpClientCache.Get(nameof(TurnstileClient), cancellationToken: cancellationToken);
     }
 
     public void Dispose()

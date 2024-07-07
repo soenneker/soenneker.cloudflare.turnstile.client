@@ -1,6 +1,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using System;
+using System.Threading;
 
 namespace Soenneker.Cloudflare.Turnstile.Client.Abstract;
 
@@ -9,5 +10,5 @@ namespace Soenneker.Cloudflare.Turnstile.Client.Abstract;
 /// </summary>
 public interface ITurnstileClient : IAsyncDisposable, IDisposable
 {
-    ValueTask<HttpClient> Get();
+    ValueTask<HttpClient> Get(CancellationToken cancellationToken = default);
 }
