@@ -4,7 +4,7 @@ using Soenneker.Cloudflare.Turnstile.Client.Abstract;
 using Soenneker.Tests.FixturedUnit;
 using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
+
 
 namespace Soenneker.Cloudflare.Turnstile.Client.Tests;
 
