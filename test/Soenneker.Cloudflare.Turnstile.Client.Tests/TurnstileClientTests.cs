@@ -21,7 +21,7 @@ public class TurnstileClientTests : FixturedUnitTest
     [Fact]
     public async Task GetClient_should_return_client()
     {
-        HttpClient client = await _util.Get();
+        HttpClient client = await _util.Get(cancellationToken: CancellationToken);
         client.Should().NotBeNull();
     }
 }

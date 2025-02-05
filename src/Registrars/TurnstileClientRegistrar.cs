@@ -13,18 +13,20 @@ public static class TurnstileClientRegistrar
     /// <summary>
     /// Adds <see cref="ITurnstileClient"/> as a singleton service. <para/>
     /// </summary>
-    public static void AddTurnstileClientAsSingleton(this IServiceCollection services)
+    public static IServiceCollection AddTurnstileClientAsSingleton(this IServiceCollection services)
     {
-        services.AddHttpClientCache();
-        services.TryAddSingleton<ITurnstileClient, TurnstileClient>();
+        services.AddHttpClientCacheAsSingleton().TryAddSingleton<ITurnstileClient, TurnstileClient>();
+
+        return services;
     }
 
     /// <summary>
     /// Adds <see cref="ITurnstileClient"/> as a scoped service. <para/>
     /// </summary>
-    public static void AddTurnstileClientAsScoped(this IServiceCollection services)
+    public static IServiceCollection AddTurnstileClientAsScoped(this IServiceCollection services)
     {
-        services.AddHttpClientCache();
-        services.TryAddScoped<ITurnstileClient, TurnstileClient>();
+        services.AddHttpClientCacheAsSingleton().TryAddScoped<ITurnstileClient, TurnstileClient>();
+
+        return services;
     }
 }
