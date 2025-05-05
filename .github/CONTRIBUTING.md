@@ -1,4 +1,4 @@
-# Contributing to Soenneker.Cloudflare.Turnstile.Client
+﻿# Contributing to Soenneker.Cloudflare.Turnstile.Client
 
 We're excited that you're interested in contributing!
 
