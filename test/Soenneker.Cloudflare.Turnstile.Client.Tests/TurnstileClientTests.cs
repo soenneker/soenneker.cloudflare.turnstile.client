@@ -1,5 +1,5 @@
 using System.Net.Http;
-using FluentAssertions;
+using AwesomeAssertions;
 using Soenneker.Cloudflare.Turnstile.Client.Abstract;
 using Soenneker.Tests.FixturedUnit;
 using System.Threading.Tasks;
