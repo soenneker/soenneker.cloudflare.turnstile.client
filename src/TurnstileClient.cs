@@ -8,7 +8,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 namespace Soenneker.Cloudflare.Turnstile.Client;
 
 /// <inheritdoc cref="ITurnstileClient"/>
-public class TurnstileClient : ITurnstileClient
+public sealed class TurnstileClient : ITurnstileClient
 {
     private readonly IHttpClientCache _httpClientCache;
 
@@ -24,15 +24,11 @@ public class TurnstileClient : ITurnstileClient
 
     public void Dispose()
     {
-        GC.SuppressFinalize(this);
-
         _httpClientCache.RemoveSync(nameof(TurnstileClient));
     }
 
     public ValueTask DisposeAsync()
     {
-        GC.SuppressFinalize(this);
-
         return _httpClientCache.Remove(nameof(TurnstileClient));
     }
 }
