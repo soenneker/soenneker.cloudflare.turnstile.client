@@ -14,7 +14,7 @@
         <AssemblyName>Soenneker.Cloudflare.Turnstile.Client</AssemblyName>
         <PackageId>Soenneker.Cloudflare.Turnstile.Client</PackageId>
         <PackageTags>cloudflare turnstile client http httpclient turnstileclient util csharp dotnet c# .net captcha</PackageTags>
-        <Copyright>Copyright © 2024-2025 Jake Soenneker</Copyright>
+        <Copyright>Copyright © 2024-2026 Jake Soenneker</Copyright>
         <Authors>Jake Soenneker</Authors>
         <Company>https://soenneker.com</Company>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
