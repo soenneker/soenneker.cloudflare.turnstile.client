@@ -1,24 +1,23 @@
 using System.Net.Http;
 using AwesomeAssertions;
 using Soenneker.Cloudflare.Turnstile.Client.Abstract;
-using Soenneker.Tests.FixturedUnit;
+using Soenneker.Tests.HostedUnit;
 using System.Threading.Tasks;
-using Xunit;
 
 
 namespace Soenneker.Cloudflare.Turnstile.Client.Tests;
 
-[Collection("Collection")]
-public class TurnstileClientTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public class TurnstileClientTests : HostedUnitTest
 {
     private readonly ITurnstileClient _util;
 
-    public TurnstileClientTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public TurnstileClientTests(Host host) : base(host)
     {
         _util = Resolve<ITurnstileClient>(true);
     }
 
-    [Fact]
+    [Test]
     public async Task GetClient_should_return_client()
     {
         HttpClient client = await _util.Get(cancellationToken: CancellationToken);
