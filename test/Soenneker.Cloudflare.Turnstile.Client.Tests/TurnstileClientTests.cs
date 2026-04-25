@@ -1,4 +1,5 @@
 using System.Net.Http;
+using System.Threading;
 using AwesomeAssertions;
 using Soenneker.Cloudflare.Turnstile.Client.Abstract;
 using Soenneker.Tests.HostedUnit;
@@ -18,9 +19,9 @@ public class TurnstileClientTests : HostedUnitTest
     }
 
     [Test]
-    public async Task GetClient_should_return_client()
+    public async Task GetClient_should_return_client(CancellationToken cancellationToken)
     {
-        HttpClient client = await _util.Get(cancellationToken: CancellationToken);
+        HttpClient client = await _util.Get(cancellationToken: cancellationToken);
         client.Should().NotBeNull();
     }
 }

@@ -1,7 +1,6 @@
 using Soenneker.Cloudflare.Turnstile.Client.Abstract;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System;
 using System.Threading;
 using Soenneker.Utils.HttpClientCache.Abstract;
 
