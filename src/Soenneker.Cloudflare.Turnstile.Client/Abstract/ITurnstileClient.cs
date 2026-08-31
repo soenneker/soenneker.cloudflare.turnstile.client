@@ -6,12 +6,12 @@ using System.Threading;
 namespace Soenneker.Cloudflare.Turnstile.Client.Abstract;
 
 /// <summary>
-/// A .NET HTTP client for Cloudflare's Turnstile API, commonly used for server validation
+/// Provides an owned, reusable <see cref="HttpClient"/> for Cloudflare Turnstile requests.
 /// </summary>
 public interface ITurnstileClient : IAsyncDisposable, IDisposable
 {
     /// <summary>
-    /// Gets the value.
+    /// Gets the HTTP client owned by this provider instance.
     /// </summary>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task containing the result of the operation.</returns>

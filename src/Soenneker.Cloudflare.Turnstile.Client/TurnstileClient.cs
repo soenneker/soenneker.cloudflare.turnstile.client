@@ -1,4 +1,5 @@
 using Soenneker.Cloudflare.Turnstile.Client.Abstract;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Threading;
@@ -6,10 +7,10 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Cloudflare.Turnstile.Client;
 
-/// <inheritdoc cref="ITurnstileClient"/>
 public sealed class TurnstileClient : ITurnstileClient
 {
     private readonly IHttpClientCache _httpClientCache;
+    private readonly string _cacheKey = $"{nameof(TurnstileClient)}:{Guid.NewGuid():N}";
 
     public TurnstileClient(IHttpClientCache httpClientCache)
     {
@@ -18,23 +19,16 @@ public sealed class TurnstileClient : ITurnstileClient
 
     public ValueTask<HttpClient> Get(CancellationToken cancellationToken = default)
     {
-        return _httpClientCache.Get(nameof(TurnstileClient), cancellationToken: cancellationToken);
+        return _httpClientCache.Get(_cacheKey, cancellationToken: cancellationToken);
     }
 
-    /// <summary>
-    /// Releases resources used by the current instance.
-    /// </summary>
     public void Dispose()
     {
-        _httpClientCache.RemoveSync(nameof(TurnstileClient));
+        _httpClientCache.RemoveSync(_cacheKey);
     }
 
-    /// <summary>
-    /// Asynchronously releases resources used by the current instance.
-    /// </summary>
-    /// <returns>A task that represents the asynchronous operation.</returns>
     public ValueTask DisposeAsync()
     {
-        return _httpClientCache.Remove(nameof(TurnstileClient));
+        return _httpClientCache.Remove(_cacheKey);
     }
 }
