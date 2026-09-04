@@ -7,6 +7,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Cloudflare.Turnstile.Client;
 
+/// <inheritdoc cref="ITurnstileClient" />
 public sealed class TurnstileClient : ITurnstileClient
 {
     private readonly IHttpClientCache _httpClientCache;
