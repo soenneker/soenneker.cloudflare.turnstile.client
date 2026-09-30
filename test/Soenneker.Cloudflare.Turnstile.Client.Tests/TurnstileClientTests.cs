@@ -19,7 +19,7 @@ public class TurnstileClientTests : HostedUnitTest
     }
 
     [Test]
-    public async Task GetClient_should_return_client(CancellationToken cancellationToken)
+    public async ValueTask GetClient_should_return_client(CancellationToken cancellationToken)
     {
         HttpClient client = await _util.Get(cancellationToken: cancellationToken);
         client.Should().NotBeNull();
